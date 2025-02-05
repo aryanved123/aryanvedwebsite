@@ -8,7 +8,6 @@ const skills = [
   { name: "Python", img: "/images/python.png" },
   { name: "Flutter", img: "/images/flutter.png" },
   { name: "MongoDB", img: "/images/mongodb.webp" },
-  { name: "Node", img: "/images/node.png" },
   { name: "Dart", img: "/images/dart.png" },
   { name: "SQL", img: "/images/SQL.png" },
   { name: "NumPy", img: "/images/numpy.svg" },

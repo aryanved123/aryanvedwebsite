@@ -6,7 +6,7 @@ import Typewriter from "typewriter-effect";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Skills from "./Skills";
-import Projects from "./Projects";
+import Projects from "./Projects/Projects";
 import AboutMe from "./AboutMe";
 import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";

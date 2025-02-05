@@ -9,19 +9,19 @@ const experience = [
     description: "Developed scalable AI-powered applications with cutting-edge NLP models.",
   },
   {
-    title: "iOS Tech Support Rep",
+    title: "iOS Tech Support Representative",
     company: "Transcom",
-    date: "Jan 2024 - Present",
-    description: "Provided technical support for Apple devices, troubleshooting hardware & software issues.",
-  },
+    date: "June 2024 - Sept 2024",
+    description: " Resolved complex software and hardware issues for Apple devices, including iPhones, iPads, and MacBooks, leveraging diagnostic tools and technical expertise to optimize system performance."
+  }
 ];
 
 const education = [
   {
-    title: "BSc Computer Science",
+    title: "Bachelor's of Science in Computer Science",
     company: "Ontario Tech University",
     date: "2022 - 2026",
-    description: "Specialized in software development, cybersecurity, and data analytics.",
+    description: "Relevant Courses: Artificial Intelligence, Data Structures, Mobile Devlopment, Databases & Concepts",
   },
 ];
 
