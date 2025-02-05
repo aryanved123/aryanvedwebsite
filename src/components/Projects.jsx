@@ -1,47 +1,58 @@
-import { Parallax } from "react-parallax";
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectCard from "./ProjectCard";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const projects = [
-  {
-    title: "Exotic Car Rental App",
-    description: "A sleek app for renting luxury cars with real-time availability.",
-    image: "/exotic-car-rental.png",
-    link: "#",
-  },
-  {
-    title: "Online Library",
-    description: "A digital library platform for borrowing and reading books online.",
-    image: "/online-library.png",
-    link: "#",
-  },
-  {
-    title: "Rock Paper Scissors Game",
-    description: "An interactive game with animations and multiplayer support.",
-    image: "/rock-paper-scissors.png",
-    link: "#",
-  },
+  { id: 1, title: "Project One" },
+  { id: 2, title: "Project Two" },
+  { id: 3, title: "Project Three" },
+  { id: 4, title: "Project Four" },
 ];
 
-const Projects = () => {
-  return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h2 className="text-3xl font-bold text-center mb-6">My Projects</h2>
-      <div className="space-y-12">
-        {projects.map((project, index) => (
-          <Parallax key={index} bgImage={project.image} strength={300} className="rounded-xl shadow-lg">
-            <div className="h-96 flex items-center justify-center bg-black/40 rounded-xl">
-              <ProjectCard 
-                title={project.title} 
-                description={project.description} 
-                image={project.image} 
-                link={project.link} 
-              />
-            </div>
-          </Parallax>
-        ))}
-      </div>
-    </div>
-  );
-};
+export default function Projects() {
+  useEffect(() => {
+    projects.forEach((_, index) => {
+      const randomDirection = [
+        { x: -200, y: 0 }, // Left
+        { x: 200, y: 0 },  // Right
+        { x: 0, y: -200 }, // Top
+        { x: 0, y: 200 },  // Bottom
+        { x: -150, y: -150 }, // Top-left
+        { x: 150, y: -150 },  // Top-right
+        { x: -150, y: 150 },  // Bottom-left
+        { x: 150, y: 150 },   // Bottom-right
+      ][Math.floor(Math.random() * 8)]; // Randomize
 
-export default Projects;
+      gsap.fromTo(
+        `.project-card-${index}`,
+        { opacity: 0, x: randomDirection.x, y: randomDirection.y, scale: 0.8 },
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          scale: 1,
+          scrollTrigger: {
+            trigger: `.project-card-${index}`,
+            start: "top 85%",
+            end: "top 50%",
+            scrub: true,
+          },
+        }
+      );
+    });
+  }, []);
+
+  return (
+    <section className="relative flex flex-col items-center gap-40 py-40 bg-gradient-to-b from-gray-900 to-black">
+      <h2 className="text-6xl font-extrabold text-white">My Projects</h2>
+      {projects.map((project, index) => (
+        <div key={project.id} className={`project-card-${index}`}>
+          <ProjectCard project={project} />
+        </div>
+      ))}
+    </section>
+  );
+}
