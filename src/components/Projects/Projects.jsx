@@ -23,78 +23,88 @@ const projects = [
     github: "https://github.com/project2",
     live: "https://project2.com",
   },
-  // Add more projects as needed
 ];
+
+// Scroll animation for each project card
+const fadeInUp = {
+  hidden: { opacity: 0, y: 150, scale: 0.9 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 1.5, ease: "easeOut" } },
+};
+
+// Animation variants for horizontal, vertical, and diagonal
+const horizontalAnimation = {
+  hidden: { opacity: 0, x: -150 },
+  visible: { opacity: 1, x: 0, transition: { duration: 1.5, ease: "easeOut" } },
+};
+
+const verticalAnimation = {
+  hidden: { opacity: 0, y: -150 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1.5, ease: "easeOut" } },
+};
+
+const diagonalAnimation = {
+  hidden: { opacity: 0, x: -100, y: -100 },
+  visible: { opacity: 1, x: 0, y: 0, transition: { duration: 1.5, ease: "easeOut" } },
+};
 
 export default function Projects() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
     const lenis = new Lenis({ smooth: true, lerp: 0.1 });
-    function raf(time) {
+
+    const raf = (time) => {
       lenis.raf(time);
       requestAnimationFrame(raf);
-    }
+    };
     requestAnimationFrame(raf);
 
-    gsap.fromTo(
-      ".project-card",
-      { opacity: 0, y: 150, scale: 0.9 },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 1.5,
-        stagger: 0.3,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          end: "top 10%",
-          scrub: true,
-        },
-      }
-    );
+    return () => lenis.destroy();
   }, []);
 
   return (
     <motion.section
       ref={sectionRef}
-      className="relative flex flex-col items-center py-40 bg-gray-900 text-gray-200"
+      className="relative flex flex-col items-center py-0 bg-gray-900 text-gray-200"
     >
       <motion.h2
         className="text-6xl font-extrabold text-white mb-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, ease: "easeInOut" }}
+        initial="hidden"
+        animate="visible"
+        variants={fadeInUp}
       >
         My Projects
       </motion.h2>
 
-      <div className="w-full max-w-7xl space-y-20">
-        {projects.map((project) => (
+      <div className="w-full flex flex-col space-y-0">
+        {projects.map((project, index) => (
           <motion.div
             key={project.id}
-            className="project-card relative bg-transparent border-2 border-gray-500 rounded-lg shadow-lg overflow-hidden"
-            initial={{ opacity: 0, y: 150, scale: 0.9 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            className="project-card relative flex justify-center items-center bg-transparent shadow-lg overflow-hidden h-screen w-full"
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: false, amount: 0.25 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
+            variants={
+              index % 3 === 0
+                ? diagonalAnimation // Diagonal for odd index
+                : index % 2 === 0
+                ? horizontalAnimation // Horizontal for even index
+                : verticalAnimation // Vertical for others
+            }
           >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-72 object-cover"
+            <div className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${project.image})` }}
             />
-            <div className="p-6 text-center space-y-4">
-              <h3 className="text-3xl font-semibold text-white">{project.title}</h3>
+            <div className="relative z-10 p-8 text-center space-y-4 max-w-4xl mx-auto">
+              <h3 className="text-5xl font-semibold text-white">{project.title}</h3>
               <p className="text-lg text-gray-300">{project.description}</p>
-              <div className="space-x-4">
+              <div className="flex justify-center space-x-4">
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:text-blue-600 transition"
+                  aria-label={`View ${project.title} on GitHub`}
                 >
                   GitHub
                 </a>
@@ -103,6 +113,7 @@ export default function Projects() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-green-400 hover:text-green-600 transition"
+                  aria-label={`Visit live site for ${project.title}`}
                 >
                   Live Site
                 </a>

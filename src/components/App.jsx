@@ -10,8 +10,7 @@ import Projects from "./Projects/Projects";
 import AboutMe from "./AboutMe";
 import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
-
-
+import ThreeBackground from "./ThreeBackground"; // Import the Three.js component
 
 AOS.init();
 
@@ -26,10 +25,10 @@ export default function App() {
     { name: "LinkedIn", href: "https://www.linkedin.com/in/aryan-ved/", external: true },
   ];
 
-
   return (
-    <div className="bg-gray-900 text-gray-200 min-h-screen font-[Inter]">
-      <header className="">
+    <div className="relative min-h-screen bg-gray-900 text-gray-200 font-[Inter]">
+      <ThreeBackground /> {/* Three.js background, now positioned behind the content */}
+      <header className="relative z-10">
         <nav className="container mx-auto flex items-center justify-between p-5">
           <button onClick={() => setCurrentSection("home")} className="text-2xl font-semibold text-white">
             Aryan Ved
@@ -58,7 +57,7 @@ export default function App() {
       </header>
 
       <Dialog open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} className="lg:hidden fixed inset-0 bg-black/50 z-50">
-        <div className="fixed inset-y-0 right-0 w-64 bg-gray-00 shadow-lg p-6">
+        <div className="fixed inset-y-0 right-0 w-64 bg-gray-800 shadow-lg p-6">
           <button onClick={() => setMobileMenuOpen(false)} className="absolute top-4 right-4">
             <XMarkIcon className="w-6 h-6 text-gray-300" />
           </button>
@@ -85,9 +84,9 @@ export default function App() {
         </div>
       </Dialog>
 
-      <main className="pt-20">
+      <main className="relative z-10 pt-20">
         {currentSection === "home" && (
-          <section className="relative flex flex-col items-center justify-center text-center min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 px-6">
+          <section className="relative flex flex-col items-center justify-center text-center min-h-screen px-6">
             <motion.h1 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="text-5xl font-extrabold sm:text-7xl text-white drop-shadow-lg">
               <Typewriter options={{ strings: ["Welcome to My Portfolio", "I'm Aryan Ved", "A Software Engineer"], autoStart: true, loop: true, deleteSpeed: 100 }} />
             </motion.h1>
@@ -98,9 +97,7 @@ export default function App() {
         )}
 
         {currentSection === "aboutme" && <AboutMe />}
-       
         {currentSection === "projects" && <Projects />}
-        
       </main>
     </div>
   );

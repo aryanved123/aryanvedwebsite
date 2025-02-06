@@ -9,7 +9,7 @@ export default function AboutMe() {
     <SmoothScroll>
       <section className="text-white bg-gradient-to-b from-gray-900 to-black">
         {/* About Me Section */}
-        <section className="min-h-screen py-16 sm:py-32 text-center font-poppins bg-gradient-to-b from-gray-900 to-black mb-40">
+        <section className="min-h-screen py-16 sm:py-32 text-center font-poppins bg-gradient-to-b from-gray-900 to-black-800 mb-40">
           <motion.h2
             className="text-5xl font-extrabold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-8"
             initial={{ opacity: 0 }}
@@ -73,6 +73,7 @@ export default function AboutMe() {
         <section className="mt-40">
           <Timeline />
         </section>
+
       </section>
     </SmoothScroll>
   );

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -29,14 +28,12 @@ const education = [
   },
 ];
 
+const skills = [
+  "JavaScript", "Python", "React", "Flutter", "Node.js", "GSAP", "Tailwind CSS", "DaisyUI", "SQL", "Git",
+];
+
 const TimelineCard = ({ item, index }) => (
-  <motion.div
-    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.6, ease: "easeOut" }}
-    viewport={{ once: true }}
-    className="mb-16 ml-6"
-  >
+  <div className="mb-16 ml-6 timeline-card">
     <div className="absolute w-6 h-6 bg-blue-500 rounded-full -left-3.5 border-4 border-gray-900" />
     <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
       <h3 className="text-xl font-bold text-white">{item.title}</h3>
@@ -44,12 +41,20 @@ const TimelineCard = ({ item, index }) => (
       <p className="text-gray-300 text-sm italic">{item.date}</p>
       <p className="text-gray-300 mt-2">{item.description}</p>
     </div>
-  </motion.div>
+  </div>
+);
+
+const SkillCard = ({ skill }) => (
+  <div className="mb-4 mx-6">
+    <div className="bg-gray-800 p-4 rounded-lg shadow-lg">
+      <h3 className="text-xl font-bold text-white">{skill}</h3>
+    </div>
+  </div>
 );
 
 export default function Timeline() {
   useEffect(() => {
-    // Apply scroll trigger animations for both up and down scrolls
+    // Apply scroll-trigger animations for both up and down scrolls
     gsap.utils.toArray(".timeline-card").forEach((card) => {
       gsap.fromTo(
         card,
@@ -62,6 +67,8 @@ export default function Timeline() {
             start: "top 75%",  // Trigger earlier for more room
             end: "top 20%",
             scrub: true,
+            // Optional: Add markers for debugging
+            // markers: true,
           },
         }
       );
@@ -71,11 +78,11 @@ export default function Timeline() {
   return (
     <div className="relative w-full max-w-6xl mx-auto py-40">
       <h2 className="text-4xl font-extrabold text-center text-blue-400 mb-12">
-        Experience & Education
+        Experience, Education & Skills
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Experience Timeline */}
+        {/* Work Experience Timeline */}
         <div>
           <h3 className="text-3xl font-bold text-center text-blue-400 mb-6">Work Experience</h3>
           <div className="relative border-l-4 border-blue-500">
