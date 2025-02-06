@@ -28,8 +28,8 @@ export default function App() {
 
 
   return (
-    <div className="bg-gray-900 text-gray-100 min-h-screen font-[Inter]">
-      <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-lg bg-gray-800/80 shadow-lg">
+    <div className="bg-gray-900 text-gray-200 min-h-screen font-[Inter]">
+      <header className="">
         <nav className="container mx-auto flex items-center justify-between p-5">
           <button onClick={() => setCurrentSection("home")} className="text-2xl font-semibold text-white">
             Aryan Ved
@@ -58,7 +58,7 @@ export default function App() {
       </header>
 
       <Dialog open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} className="lg:hidden fixed inset-0 bg-black/50 z-50">
-        <div className="fixed inset-y-0 right-0 w-64 bg-gray-800 shadow-lg p-6">
+        <div className="fixed inset-y-0 right-0 w-64 bg-gray-00 shadow-lg p-6">
           <button onClick={() => setMobileMenuOpen(false)} className="absolute top-4 right-4">
             <XMarkIcon className="w-6 h-6 text-gray-300" />
           </button>
