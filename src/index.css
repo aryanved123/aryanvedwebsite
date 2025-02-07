@@ -1,13 +1,21 @@
 /* Import Tailwind’s default styles for v4 */
 @import 'tailwindcss';
 
-/* Global Styles */
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
+/* Three.js Styles */
+canvas {
+  display: block; /* Removes extra space below the canvas */
+  margin: 0 auto; /* Centers the canvas */
+  background-color: #000; /* Sets the background color of the Three.js canvas */
+  width: 100%; /* Ensures the canvas takes up the full width */
+  height: 100vh; /* Makes the canvas take up the full height of the viewport */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Puts the canvas behind other content */
 }
 
-a {
-  text-decoration: none;
+/* Ensure that other content (if any) is above the canvas */
+.container {
+  position: relative;
+  z-index: 1;
 }

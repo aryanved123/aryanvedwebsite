@@ -1,63 +1,107 @@
-import { useEffect } from "react";
-import * as THREE from "three";
+import { useEffect, useRef } from "react";
+import {
+  BoxGeometry,
+  CineonToneMapping,
+  DirectionalLight,
+  Mesh,
+  MeshStandardMaterial,
+  PCFSoftShadowMap,
+  PerspectiveCamera,
+  PlaneGeometry,
+  Scene,
+  WebGLRenderer,
+} from "three";
+import { OrbitControls } from "three-stdlib";
 
-const ThreeBackground = () => {
+export default function ThreeBackground() {
+  const mountRef = useRef(null);
+
   useEffect(() => {
-    // Create scene and camera
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    console.log("Initializing Three.js Interactive Background...");
 
-    // Append the renderer to the document (but not to the body directly)
-    const container = document.getElementById("threejs-container");
-    container.appendChild(renderer.domElement);
+    // Create a scene
+    const scene = new Scene();
 
-    // Add a simple object to the scene (cube)
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-
-    // Set camera position
+    // Create a camera
+    const camera = new PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
     camera.position.z = 5;
 
-    // Animation function
-    const animate = function () {
-      requestAnimationFrame(animate);
+    // Create a renderer
+    const renderer = new WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x090909);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = PCFSoftShadowMap;
+    renderer.toneMapping = CineonToneMapping;
 
-      // Rotate the cube for a simple animation
+    if (mountRef.current) {
+      mountRef.current.appendChild(renderer.domElement); // Attach the renderer to the DOM
+    }
+
+    // Create a cube
+    const geometry = new BoxGeometry();
+    const material = new MeshStandardMaterial({ color: 0x00ff00 });
+    const cube = new Mesh(geometry, material);
+    cube.castShadow = true;
+    scene.add(cube);
+
+    // Create a plane
+    const groundGeometry = new PlaneGeometry(10, 10);
+    const groundMaterial = new MeshStandardMaterial({ color: 0x808080 });
+    groundMaterial.roughness = 0.6;
+    groundMaterial.metalness = 0.4;
+    const ground = new Mesh(groundGeometry, groundMaterial);
+    ground.rotation.x = -Math.PI / 2;
+    ground.position.y = -1;
+    ground.receiveShadow = true;
+    scene.add(ground);
+
+    // Add a light
+    const light = new DirectionalLight(0xffffff, 1);
+    light.position.set(0, 5, 0);
+    light.castShadow = true;
+    scene.add(light);
+
+    // Add orbit controls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.update();
+
+    // Animation loop
+    const animate = () => {
       cube.rotation.x += 0.01;
       cube.rotation.y += 0.01;
-
       renderer.render(scene, camera);
+      requestAnimationFrame(animate); // Keep the animation going
     };
-
-    // Start the animation
     animate();
 
-    // Resize handling
-    window.addEventListener("resize", () => {
+    // Resize handler
+    const resize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
-    });
+    };
+    window.addEventListener("resize", resize);
 
+    // Cleanup function to avoid memory leaks
+    return () => {
+      window.removeEventListener("resize", resize);
+      if (mountRef.current) {
+        mountRef.current.removeChild(renderer.domElement); // Remove renderer from DOM
+      }
+      renderer.dispose(); // Dispose of the renderer
+    };
   }, []);
 
   return (
     <div
-      id="threejs-container"
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        zIndex: -1,  // Ensure it's behind all content
-      }}
-    />
+      ref={mountRef}
+      className="fixed top-0 left-0 w-full h-full z-0"
+    ></div>
   );
-};
-
-export default ThreeBackground;
+}

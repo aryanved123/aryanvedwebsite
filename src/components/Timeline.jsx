@@ -54,34 +54,42 @@ const SkillCard = ({ skill }) => (
 
 export default function Timeline() {
   useEffect(() => {
-    // Apply scroll-trigger animations for both up and down scrolls
+    // Apply scroll-trigger animations for both up and down scrolls with new effects
     gsap.utils.toArray(".timeline-card").forEach((card) => {
       gsap.fromTo(
         card,
-        { y: 100, opacity: 0 },
         {
-          y: 0,
+          opacity: 0,
+          y: 100,  // Start from below the viewport for more noticeable animation
+          scale: 0.8,  // Optionally scale cards for smooth animation
+        },
+        {
           opacity: 1,
+          y: 0,  // Move the card to its natural position
+          scale: 1,  // Scale back to normal size
           scrollTrigger: {
             trigger: card,
-            start: "top 75%",  // Trigger earlier for more room
-            end: "top 20%",
-            scrub: true,
-            // Optional: Add markers for debugging
-            // markers: true,
+            start: "top 85%", // Start triggering the animation when the card is about to be 85% into the viewport
+            end: "top 10%",  // End when the card reaches 10% of the viewport height
+            scrub: true,     // Smooth scrolling and animations with the scroll position
+            markers: false,  // Optional: use markers to see where scroll triggers occur
+            once: true,      // Ensure the animation only triggers once per scroll
           },
         }
       );
     });
   }, []);
+  
+  
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto py-40">
-      <h2 className="text-4xl font-extrabold text-center text-blue-400 mb-12">
-        Experience, Education & Skills
+    <div className="relative w-full max-w-6xl mx-auto py-40 min-h-screen overflow-y-auto">
+      <h2 className="text-4xl font-extrabold text-center text-blue-400 mb-50">
+        {/* Title or additional content */}
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Adjusted Grid Layout to stack vertically on smaller screens */}
+      <div className="grid grid-cols-1 gap-8">
         {/* Work Experience Timeline */}
         <div>
           <h3 className="text-3xl font-bold text-center text-blue-400 mb-6">Work Experience</h3>

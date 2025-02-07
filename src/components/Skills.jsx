@@ -43,7 +43,7 @@ const SkillCard = ({ skill }) => {
 
 const Skills = () => {
   return (
-    <div className="flex flex-wrap gap-6 justify-center mt-24 mb-40">
+    <div className="flex flex-wrap gap-6 justify-center mt-24">
       {skills.map((skill, index) => (
         <motion.div
           key={skill.name}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -8,9 +8,8 @@ import "aos/dist/aos.css";
 import Skills from "./Skills";
 import Projects from "./Projects/Projects";
 import AboutMe from "./AboutMe";
-import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
-import ThreeBackground from "./ThreeBackground"; // Import the Three.js component
+import ThreeBackground from "./ThreeBackground"; // Three.js background
 
 AOS.init();
 
@@ -27,44 +26,77 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-gray-900 text-gray-200 font-[Inter]">
-      <ThreeBackground /> {/* Three.js background, now positioned behind the content */}
-      <header className="relative z-10">
-        <nav className="container mx-auto flex items-center justify-between p-5">
-          <button onClick={() => setCurrentSection("home")} className="text-2xl font-semibold text-white">
+
+      {/* ✅ Improved Navbar */}
+      <header className="fixed top-0 left-0 w-full z-50 black/10 backdrop-blur-lg shadow-md">
+        <motion.nav 
+          initial={{ y: -50, opacity: 0 }} 
+          animate={{ y: 0, opacity: 1 }} 
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="container mx-auto flex items-center justify-between px-6 py-3"
+        >
+          {/* 🔥 Interactive Logo */}
+          <motion.button 
+            onClick={() => setCurrentSection("home")} 
+            whileHover={{ scale: 1.1, color: "#60a5fa" }} 
+            className="text-2xl font-bold text-white tracking-wide"
+          >
             Aryan Ved
-          </button>
+          </motion.button>
+
+          {/* Desktop Navigation */}
           <div className="hidden lg:flex space-x-8">
             {navigation.map((item) =>
               item.external ? (
-                <a key={item.name} href={item.href} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-indigo-400 transition">
+                <a 
+                  key={item.name} 
+                  href={item.href} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-sm text-gray-300 hover:text-indigo-400 transition relative group"
+                >
                   {item.name}
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-indigo-400 transition-all group-hover:w-full"></span>
                 </a>
               ) : (
                 <button
                   key={item.name}
                   onClick={() => setCurrentSection(item.section)}
-                  className="text-gray-300 hover:text-indigo-400 transition"
+                  className="text-sm text-gray-300 hover:text-indigo-400 transition relative group"
                 >
                   {item.name}
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-indigo-400 transition-all group-hover:w-full"></span>
                 </button>
               )
             )}
           </div>
+
+          {/* Mobile Menu Button */}
           <button onClick={() => setMobileMenuOpen(true)} className="lg:hidden">
             <Bars3Icon className="w-6 h-6 text-gray-300" />
           </button>
-        </nav>
+        </motion.nav>
       </header>
 
-      <Dialog open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} className="lg:hidden fixed inset-0 bg-black/50 z-50">
-        <div className="fixed inset-y-0 right-0 w-64 bg-gray-800 shadow-lg p-6">
+      {/* 📱 Mobile Menu */}
+      <Dialog open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} className="lg:hidden fixed inset-0 bg-black/40 z-50">
+        <motion.div 
+          initial={{ x: "100%" }} 
+          animate={{ x: 0 }} 
+          exit={{ x: "100%" }} 
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="fixed inset-y-0 right-0 w-64 bg-gray-800/90 backdrop-blur-xl shadow-lg p-6"
+        >
+          {/* Close Button */}
           <button onClick={() => setMobileMenuOpen(false)} className="absolute top-4 right-4">
             <XMarkIcon className="w-6 h-6 text-gray-300" />
           </button>
-          <div className="mt-10 space-y-4">
+
+          {/* Links */}
+          <div className="mt-10 space-y-6">
             {navigation.map((item) =>
               item.external ? (
-                <a key={item.name} href={item.href} target="_blank" rel="noopener noreferrer" className="block text-lg text-gray-300 hover:text-indigo-400">
+                <a key={item.name} href={item.href} target="_blank" rel="noopener noreferrer" className="block text-lg text-gray-300 hover:text-indigo-400 transition">
                   {item.name}
                 </a>
               ) : (
@@ -74,24 +106,45 @@ export default function App() {
                     setCurrentSection(item.section);
                     setMobileMenuOpen(false);
                   }}
-                  className="block text-lg text-gray-300 hover:text-indigo-400"
+                  className="block text-lg text-gray-300 hover:text-indigo-400 transition"
                 >
                   {item.name}
                 </button>
               )
             )}
           </div>
-        </div>
+        </motion.div>
       </Dialog>
 
-      <main className="relative z-10 pt-20">
+      {/* 🏠 Main Content */}
+      <main className="relative z-10 pt-10"> {/* Adjusted padding-top from pt-20 to pt-16 */}
+        
         {currentSection === "home" && (
           <section className="relative flex flex-col items-center justify-center text-center min-h-screen px-6">
-            <motion.h1 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="text-5xl font-extrabold sm:text-7xl text-white drop-shadow-lg">
-              <Typewriter options={{ strings: ["Welcome to My Portfolio", "I'm Aryan Ved", "A Software Engineer"], autoStart: true, loop: true, deleteSpeed: 100 }} />
+            <div className="absolute inset-0 z-0">
+        <ThreeBackground /> {/* 3D Background */}
+      </div>
+            <motion.h1 
+              initial={{ opacity: 0, y: -20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 1 }} 
+              className="text-5xl font-extrabold sm:text-7xl text-white drop-shadow-lg"
+            >
+              <Typewriter 
+                options={{ 
+                  strings: ["Welcome to My Portfolio", "I'm Aryan Ved", "A Software Engineer"], 
+                  autoStart: true, 
+                  loop: true, 
+                  deleteSpeed: 100 
+                }} 
+              />
             </motion.h1>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }} className="mt-4 text-lg sm:text-xl text-gray-300 max-w-2xl">
-              Passionate about problem-solving, technology, and building innovative applications.
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 1, delay: 0.3 }} 
+              className="mt-4 text-lg sm:text-xl text-gray-300 max-w-2xl"
+            >
             </motion.p>
           </section>
         )}
