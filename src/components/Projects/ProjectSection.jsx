@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,12 +54,12 @@ export default function ProjectSection({ project, index }) {
 
       {/* Text & Buttons */}
       <div className="w-full md:w-[55%] lg:w-[50%] flex flex-col items-center md:items-start text-center md:text-left">
-        <h2 ref={titleRef} className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+        <h2 ref={titleRef} className="text-5xl md:text-6xl font-extrabold text-white leading-tight">
           {project.title}
         </h2>
-        <p ref={textRef} className="text-xl md:text-3xl text-gray-300 leading-relaxed mb-8">
-          {project.description}
-        </p>
+        <p ref={textRef} className="text-xl md:text-2xl italic text-gray-500 leading-relaxed mb-8">
+          {project.language}
+        </p>   
 
         {/* Buttons */}
 <div ref={buttonsRef} className="flex gap-8">
@@ -80,8 +81,13 @@ export default function ProjectSection({ project, index }) {
     href={project.live}
     className="px-10 py-5 text-2xl rounded-xl bg-blue-900 text-white font-medium transition duration-300 transform hover:scale-110 hover:bg-green-700 shadow-lg"
   >
-    Live Demo
+    Demo
   </a>
+  {project.read && (
+    <Link to={project.read} className="px-10 py-5 text-2xl rounded-xl bg-green-900 text-white font-medium transition duration-300 transform hover:scale-110 hover:bg-green-700 shadow-lg">
+      Read More
+    </Link>
+  )}
 </div>
 
       </div>
