@@ -60,23 +60,23 @@ export default function Timeline() {
         card,
         {
           opacity: 0,
-          y: 100,  // Start from below the viewport for more noticeable animation
-          scale: 0.8,  // Optionally scale cards for smooth animation
+          y: 50,  // Reduced offset to ensure smoother animation
+          scale: 0.8,
         },
         {
           opacity: 1,
-          y: 0,  // Move the card to its natural position
-          scale: 1,  // Scale back to normal size
+          y: 0,
+          scale: 1,
           scrollTrigger: {
             trigger: card,
-            start: "top 85%", // Start triggering the animation when the card is about to be 85% into the viewport
-            end: "top 10%",  // End when the card reaches 10% of the viewport height
-            scrub: true,     // Smooth scrolling and animations with the scroll position
-            markers: false,  // Optional: use markers to see where scroll triggers occur
-            once: true,      // Ensure the animation only triggers once per scroll
+            start: "top 100%",
+            end: "top 70%",
+            scrub: true,
+            once: true,
           },
         }
       );
+      
     });
   }, []);
   

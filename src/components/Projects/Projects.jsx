@@ -10,8 +10,8 @@ import ProjectSection from "./ProjectSection";
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
-  { id: 1, title: "AI Chatbot", description: "A smart chatbot powered by AI.", image: "/images/chatbot.jpg", github: "#", live: "#" },
-  { id: 2, title: "E-commerce Store", description: "A full-stack e-commerce platform.", image: "/images/ecommerce.jpg", github: "#", live: "#" },
+  { id: 1, title: "Exotic Car Rental App", description: "Created using Flutter, Dart, Firebase.", image: "/images/rentalappfront.jpg", github: "#", live: "#" },
+  { id: 2, title: "Online Library", description: "Created using HTML, CSS, JavaScript, GlassFish", image: "/images/libraryimg2.png", github: "#", live: "#" },
   { id: 3, title: "Portfolio Website", description: "A personal portfolio showcasing my work.", image: "/images/portfolio.jpg", github: "#", live: "#" },
   { id: 4, title: "Weather App", description: "A real-time weather forecasting app.", image: "/images/weather.jpg", github: "#", live: "#" },
 ];
@@ -45,7 +45,7 @@ export default function Projects() {
 
       {/* Projects Section */}
       <div className="relative flex flex-col items-center">
-        <h1 className="text-5xl font-bold text-white text-center mt-20">My Projects</h1>
+        <h1 className="text-5xl font-bold text-white text-center mt-140 mb-150">My Projects</h1>
         
         {/* Loop Through Projects */}
         {projects.map((project, index) => (
