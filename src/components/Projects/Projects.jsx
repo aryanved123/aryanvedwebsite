@@ -6,15 +6,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
 import Project3D from "./Project3D";
 import ProjectSection from "./ProjectSection";
-
+import Footer from "../Footer"; // Import Footer here
 
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
-  { id: 1, title: "Exotic Car Rental App", language: "Created using Flutter, Dart, Firebase.",  image: "/images/rentalappfront.jpg", github: "#", live: "https://www.youtube.com/shorts/OjF_Pw3BkwQ", read: "#" },
+  { id: 1, title: "Exotic Car Rental App", language: "Created using Flutter, Dart, Firebase.", image: "/images/rentalappfront.jpg", github: "#", live: "https://www.youtube.com/shorts/OjF_Pw3BkwQ", read: "#" },
   { id: 2, title: "Online Library", language: "Created using HTML, CSS, JavaScript, GlassFish", image: "/images/libraryimg2.png", github: "#", live: "#" },
-  { id: 3, title: "Portfolio Website", language: "A personal portfolio showcasing my work.", image: "/images/portfolio.jpg", github: "#", live: "#" },
-  { id: 4, title: "Weather App", language: "A real-time weather forecasting app.", image: "/images/weather.jpg", github: "#", live: "#" },
+  { id: 3, title: "Domino Game", language: "Created using Python and Tkinter.", image: "/images/domino-game.png", github: "https://github.com/aryanved123/domino-game"},
 ];
 
 export default function Projects() {
@@ -53,6 +52,9 @@ export default function Projects() {
           <ProjectSection key={project.id} project={project} index={index} />
         ))}
       </div>
+
+      {/* Add Footer Below Projects */}
+      <Footer /> {/* This is where the Footer is added */}
     </div>
   );
 }

@@ -6,10 +6,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 const experience = [
   {
-    title: "Software Engineering Intern",
-    company: "Cohere",
-    date: "May 2024 - Aug 2024",
-    description: "Developed scalable AI-powered applications with cutting-edge NLP models.",
+    title: "Web Developer (Part-Time)",
+    company: "Gross Innovations",
+    date: "Jan 2025 - Present",
+    description: "Developed and deployed advanced financial calculators, including Burn Rate, Runway, Customer Acquisition Cost (CAC), and Lifetime Value (LTV), to support data-driven decision-making for startups and businesses. Engineered a dynamic web application with React.js for an intuitive and responsive front-end, while leveraging MongoDB for a scalable and efficient back-end database.Worked within an Agile development team to enhance UI/UX workflows, optimize front-end performance, and integrate APIs for seamless data exchange and user interaction.",
   },
   {
     title: "iOS Tech Support Representative",
@@ -70,7 +70,7 @@ export default function Timeline() {
           scrollTrigger: {
             trigger: card,
             start: "top 100%",
-            end: "top 70%",
+            end: "top 10%",
             scrub: true,
             once: true,
           },

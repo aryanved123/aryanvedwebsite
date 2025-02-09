@@ -11,6 +11,7 @@ import AboutMe from "./AboutMe";
 import Lenis from "@studio-freight/lenis";
 import ThreeBackground from "./ThreeBackground"; // Three.js background
 
+
 AOS.init();
 
 export default function App() {
@@ -25,7 +26,7 @@ export default function App() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-gray-900 text-gray-200 font-[Inter]">
+    <div className="relative min-h-screen bg-black font-[Inter]">
 
       {/* ✅ Improved Navbar */}
       <header className="fixed top-0 left-0 w-full z-50 black/10 backdrop-blur-lg shadow-md">
@@ -132,7 +133,7 @@ export default function App() {
             >
               <Typewriter 
                 options={{ 
-                  strings: ["Welcome to My Portfolio", "I'm Aryan Ved", "A Software Engineer"], 
+                  strings: ["Welcome to My Portfolio", "I'm Aryan Ved", "A Computer Science Student @ Ontario Tech University"], 
                   autoStart: true, 
                   loop: true, 
                   deleteSpeed: 100 
@@ -151,6 +152,7 @@ export default function App() {
 
         {currentSection === "aboutme" && <AboutMe />}
         {currentSection === "projects" && <Projects />}
+
       </main>
     </div>
   );
