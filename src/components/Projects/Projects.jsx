@@ -11,7 +11,7 @@ import Footer from "../Footer"; // Import Footer here
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
-  { id: 1, title: "Exotic Car Rental App", language: "Created using Flutter, Dart, Firebase.", image: "/images/rentalappfront.jpg", github: "#", live: "https://www.youtube.com/shorts/OjF_Pw3BkwQ", read: "#" },
+  { id: 1, title: "Exotic Car Rental App", language: "Created using Flutter, Dart, Firebase.", image: "/images/rentalappfront.jpg", github: "#", live: "https://www.youtube.com/shorts/OjF_Pw3BkwQ" },
   { id: 2, title: "Online Library", language: "Created using HTML, CSS, JavaScript, GlassFish", image: "/images/libraryimg2.png", github: "#", live: "#" },
   { id: 3, title: "Domino Game", language: "Created using Python and Tkinter.", image: "/images/domino-game.png", github: "https://github.com/aryanved123/domino-game"},
 ];
@@ -45,7 +45,7 @@ export default function Projects() {
 
       {/* Projects Section */}
       <div className="relative flex flex-col items-center">
-        <h1 className="text-5xl font-bold text-white text-center mt-140 mb-150">My Projects</h1>
+        <h1 className="text-5xl font-bold text-white text-center mt-140 mb-10">My Projects</h1>
         
         {/* Loop Through Projects */}
         {projects.map((project, index) => (
