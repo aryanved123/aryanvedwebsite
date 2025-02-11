@@ -20,13 +20,13 @@ export default function ProjectSection({ project, index }) {
     const buttons = buttonsRef.current;
 
     gsap.set([title, text, buttons], { opacity: 0, y: 100 });
-    gsap.set(image, { opacity: 0, x: 150 }); // Move image slightly right initially
+    gsap.set(image, { opacity: 0, x: 150 });
 
     gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: "top 70%",
-        end: "bottom 50%",
+        start: "top 90%",
+        end: "bottom 70%",
         scrub: 1,
       },
     })
@@ -43,7 +43,6 @@ export default function ProjectSection({ project, index }) {
         index % 2 === 0 ? "md:flex-row-reverse" : ""
       }`}
     >
-      {/* Image Section */}
       <div ref={imageRef} className="w-full md:w-[55%] lg:w-[40%] md:ml-20 relative">
         <img
           src={project.image}
@@ -52,44 +51,41 @@ export default function ProjectSection({ project, index }) {
         />
       </div>
 
-      {/* Text & Buttons */}
       <div className="w-full md:w-[55%] lg:w-[50%] flex flex-col items-center md:items-start text-center md:text-left">
         <h2 ref={titleRef} className="text-5xl md:text-6xl font-extrabold text-white leading-tight">
           {project.title}
         </h2>
         <p ref={textRef} className="text-xl md:text-2xl italic text-gray-500 leading-relaxed mb-8">
           {project.language}
-        </p>   
+        </p>
 
-        {/* Buttons */}
-<div ref={buttonsRef} className="flex gap-8">
-  {/* GitHub Button with Image */}
-  <a
-    href={project.github}
-    className="flex items-center justify-center px-6 py-4 rounded-xl bg-white text-black font-medium transition duration-300 transform hover:scale-110 hover:bg-transparent-700 shadow-lg"
-  >
-    <img 
-      src="https://cdn-icons-png.flaticon.com/512/25/25231.png"  // Replace with your GitHub icon image URL
-      alt="GitHub"
-      className="w-8 h-8 mr-3" // Size of the icon
-    />
-    GitHub
-  </a>
-  
-  {/* Live Demo Button */}
-  <a
-    href={project.live}
-    className="px-10 py-5 text-2xl rounded-xl bg-blue-900 text-white font-medium transition duration-300 transform hover:scale-110 hover:bg-green-700 shadow-lg"
-  >
-    Demo
-  </a>
-  {project.read && (
-    <Link to={project.read} className="px-10 py-5 text-2xl rounded-xl bg-green-900 text-white font-medium transition duration-300 transform hover:scale-110 hover:bg-green-700 shadow-lg">
-      Read More
-    </Link>
-  )}
-</div>
+        {/* Buttons Section */}
+        <div ref={buttonsRef} className="flex gap-8">
+          <a
+            href={project.github}
+            className="flex items-center justify-center px-6 py-4 rounded-xl bg-white text-black font-medium transition duration-300 transform hover:scale-110 hover:bg-transparent-700 shadow-lg"
+          >
+            <img 
+              src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+              alt="GitHub"
+              className="w-8 h-8 mr-3"
+            />
+            GitHub
+          </a>
 
+          <a
+            href={project.live}
+            className="px-10 py-5 text-2xl rounded-xl bg-blue-900 text-white font-medium transition duration-300 transform hover:scale-110 hover:bg-green-700 shadow-lg"
+          >
+            Demo
+          </a>
+
+          {project.read && (
+            <Link to={project.read} className="px-10 py-5 text-2xl rounded-xl bg-green-900 text-white font-medium transition duration-300 transform hover:scale-110 hover:bg-green-700 shadow-lg">
+              Read More
+            </Link>
+          )}
+        </div>
       </div>
     </section>
   );
