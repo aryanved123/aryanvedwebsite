@@ -37,6 +37,7 @@ export default function App() {
           className="container mx-auto flex items-center justify-between px-6 py-3"
         >
           {/* 🔥 Interactive Logo */}
+          <div style={{ userSelect: "none" }}>
           <motion.button 
             onClick={() => setCurrentSection("home")} 
             whileHover={{ scale: 1.1, color: "#60a5fa" }} 
@@ -44,6 +45,7 @@ export default function App() {
           >
             Aryan Ved
           </motion.button>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex space-x-8">
