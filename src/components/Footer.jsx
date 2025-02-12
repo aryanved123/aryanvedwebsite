@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <Parallax
       strength={200}
-      className="bg-black text-white py-8 mt-100 "
+      className="bg-black text-white py-8 mt-100"
       style={{ position: "relative" }}
     >
       <div className="container mx-auto flex flex-col items-center justify-between px-6">
@@ -14,9 +14,7 @@ const Footer = () => {
         <div className="flex gap-6 mb-4 md:mb-0 absolute bottom-8 right-8">
           {/* Email Link */}
           <a
-            href="mailto:your-email@example.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:aved010404@gmail.com"
             className="transition-transform duration-300 transform hover:scale-110 hover:text-gray-400 text-sm"
           >
             Email <span className="ml-1">↗</span>
@@ -24,7 +22,7 @@ const Footer = () => {
 
           {/* LinkedIn Link */}
           <a
-            href="https://www.linkedin.com/in/your-linkedin"
+            href="https://www.linkedin.com/in/aryan-ved"
             target="_blank"
             rel="noopener noreferrer"
             className="transition-transform duration-300 transform hover:scale-110 hover:text-blue-500 text-sm"
@@ -34,7 +32,7 @@ const Footer = () => {
 
           {/* GitHub Link */}
           <a
-            href="https://github.com/your-github"
+            href="https://github.com/aryanved123"
             target="_blank"
             rel="noopener noreferrer"
             className="transition-transform duration-300 transform hover:scale-110 hover:text-gray-400 text-sm"

@@ -131,14 +131,22 @@ export default function App() {
               transition={{ duration: 1 }} 
               className="text-5xl font-extrabold sm:text-7xl text-white drop-shadow-lg"
             >
+
+              <div style={{ userSelect: "none" }}>
               <Typewriter 
                 options={{ 
-                  strings: ["Welcome to My Portfolio", "I'm Aryan Ved", "A Computer Science Student @ Ontario Tech University"], 
+                  strings: [
+                    "Welcome to My Portfolio", 
+                    "I'm Aryan Ved", 
+                    "A Computer Science Student @ Ontario Tech University"
+                  ], 
                   autoStart: true, 
                   loop: true, 
                   deleteSpeed: 100 
                 }} 
               />
+            </div>
+
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }} 

@@ -37,7 +37,7 @@ export default function AboutMe() {
             <span className="text-orange-400 font-semibold"> web technologies</span>, and <span className="text-cyan-400 font-semibold">technical problem-solving</span>.
             Currently, I am working part-time as a <span className="text-blue-400 font-bold">Web Developer at Gross Innovations</span>, where I build intuitive web applications,
             leverage frameworks like <span className="text-yellow-400 font-bold">React.js</span>, and create scalable back-end solutions with{" "}
-            <span className="text-green-400 font-bold">MongoDB</span>. My time as an <span className="text-orange-400 font-bold">iOS Tech Support Representative at Transcom</span>
+            <span className="text-green-400 font-bold">MongoDB</span>. My time as an <span className="text-orange-400 font-bold">iOS Tech Support Representative at Transcom </span>
             further enriched my technical acumen, enabling me to resolve complex software and hardware issues while collaborating with cross-functional teams.
             Passionate about <span className="text-pink-400 font-semibold">coding</span> and creating <span className="text-cyan-400 font-semibold">impactful software</span>,
             I am eager to apply my skills to develop innovative solutions and enhance user experiences. When I'm not coding, you can find me solving{" "}
