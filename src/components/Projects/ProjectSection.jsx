@@ -43,13 +43,14 @@ export default function ProjectSection({ project, index }) {
         index % 2 === 0 ? "md:flex-row-reverse" : ""
       }`}
     >
-      <div ref={imageRef} className="w-full md:w-[55%] lg:w-[40%] md:ml-20 relative">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-[80vh] object-cover rounded-xl shadow-xl transition-transform duration-700 hover:scale-105"
-        />
-      </div>
+        <div ref={imageRef} className="w-auto h-auto md:ml-20 relative">
+  <img
+    src={project.image}
+    alt={project.title}
+    className="max-w-[600px] max-h-[600px] object-contain rounded-xl shadow-xl transition-transform duration-700 hover:scale-105"
+  />
+</div>
+
 
       <div className="w-full md:w-[55%] lg:w-[50%] flex flex-col items-center md:items-start text-center md:text-left">
         <h2 ref={titleRef} className="text-5xl md:text-6xl font-extrabold text-white leading-tight">
