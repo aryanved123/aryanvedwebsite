@@ -14,7 +14,6 @@ const skills = [
   { name: "NumPy", img: "/images/numpy.svg" },
   { name: "HTML", img: "/images/html.png" },
   { name: "CSS", img: "/images/css.svg" },
-  { name: "Pandas", img: "/images/pandas.png" },
 ];
 
 const SkillCard = ({ skill }) => {

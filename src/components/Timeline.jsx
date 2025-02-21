@@ -34,6 +34,12 @@ const education = [
     date: "2022 - 2026",
     description: "Relevant Courses: Artificial Intelligence, Data Structures, Mobile Development, Databases & Concepts",
   },
+  {
+    title: "Ontario Secondary School Diploma",
+    company: "Milliken Mills High School",
+    date: "2018 - 2022",
+  },
+  
 ];
 
 const skills = [
