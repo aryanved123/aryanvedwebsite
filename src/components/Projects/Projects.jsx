@@ -13,28 +13,42 @@ gsap.registerPlugin(ScrollTrigger);
 const projects = [
   {
     id: 1,
-    title: "Exotic Car Rental App",
-    language: "Created using Flutter, Dart, Firebase.",
-    image: "/images/rentalappfront.jpg",
-    github: "#",
-    live: "https://www.youtube.com/shorts/OjF_Pw3BkwQ",
-    read: "/rentalapp",
+    title: "AI Car Mod Chatbot",
+    language: "Created using Flask, HTML and OpenRouter AI.",
+    image: "/images/ai-carbot.png",
+    github: "https://github.com/aryanved123/AI-Car-Mod-Bot"
   },
   {
     id: 2,
+    title: "Exotic Car Rental App",
+    language: "Created using Flutter, Dart, Firebase.",
+    image: "/images/rentalappfront.jpg",
+    live: "https://www.youtube.com/shorts/OjF_Pw3BkwQ",
+  },
+  {
+    id: 3,
+    title: "Financial Calculator Web App",
+    language: "Created using Node.js, Express.js and MongoDB.",
+    github: "https://github.com/aryanved123/FinancialCalculator",
+  },
+  {
+    id: 3,
+    title: "Ultimate Texas Holdem Poker Game",
+    language: "Created using Node.js, Express.js and MongoDB.",
+    image: "/images/rentalappfront.jpg",
+    github: "https://github.com/aryanved123/Ultimate-Texas-Holdem-Game",
+    live: "https://ultimate-texas-holdem-game.vercel.app/"
+  },
+
+  {
+    id: 4,
     title: "Online Library",
     language: "Created using HTML, CSS, JavaScript, GlassFish",
     image: "/images/libraryimg2.png",
     github: "https://github.com/aryanved123/library.github.io",
     live: "https://aryanved123.github.io/library.github.io/catalogue.html",
   },
-  {
-    id: 3,
-    title: "Domino Game",
-    language: "Created using Python and Tkinter.",
-    image: "/images/domino-game.png",
-    github: "https://github.com/aryanved123/domino-game"
-  },
+  
 ];
 
 export default function Projects() {
