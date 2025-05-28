@@ -9,96 +9,104 @@ export default function ProjectSection({ project, index }) {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const imageRef = useRef(null);
-  const textRef = useRef(null);
-  const buttonsRef = useRef(null);
+  const contentRef = useRef(null);
 
   useEffect(() => {
     const section = sectionRef.current;
     const title = titleRef.current;
     const image = imageRef.current;
-    const text = textRef.current;
-    const buttons = buttonsRef.current;
+    const content = contentRef.current;
 
-    gsap.set([title, text, buttons], { opacity: 0, y: 100 });
+    gsap.set([title, content], { opacity: 0, y: 100 });
     gsap.set(image, { opacity: 0, x: 150 });
 
     gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: "top 90%",
-        end: "bottom 70%",
+        start: "top 80%",
+        end: "bottom 60%",
         scrub: 1,
       },
     })
       .to(title, { opacity: 1, y: 0, duration: 1 })
-      .to(text, { opacity: 1, y: 0, duration: 1 }, "-=0.5")
-      .to(image, { opacity: 1, x: 0, duration: 1.2, ease: "power2.out" }, "-=0.8")
-      .to(buttons, { opacity: 1, duration: 1 }, "-=0.6");
+      .to(content, { opacity: 1, y: 0, duration: 1 }, "-=0.6")
+      .to(image, { opacity: 1, x: 0, duration: 1.2, ease: "power2.out" }, "-=1");
   }, [index]);
 
   return (
     <section
       ref={sectionRef}
-      className={`relative flex flex-col md:flex-row items-center justify-center min-h-screen w-full px-10 md:px-32 py-20 gap-16 ${
+      className={`relative flex flex-col-reverse md:flex-row items-center justify-between min-h-[80vh] w-full px-6 md:px-24 py-20 gap-14 ${
         index % 2 === 0 ? "md:flex-row-reverse" : ""
       }`}
     >
-        <div ref={imageRef} className="w-auto h-auto md:ml-20 relative">
-  <img
-    src={project.image}
-    alt={project.title}
-    className="max-w-[600px] max-h-[600px] object-contain rounded-xl shadow-xl transition-transform duration-700 hover:scale-105"
-  />
-</div>
+      {/* Image Section */}
+      {project.image && (
+        <div
+          ref={imageRef}
+          className="w-full md:w-1/2 flex justify-center"
+        >
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full max-w-[500px] rounded-2xl shadow-2xl hover:scale-[1.03] transition duration-500 ease-in-out"
+          />
+        </div>
+      )}
 
-
-      <div className="w-full md:w-[55%] lg:w-[50%] flex flex-col items-center md:items-start text-center md:text-left">
-        <h2 ref={titleRef} className="text-5xl md:text-6xl font-extrabold text-white leading-tight">
+      {/* Text & Button Section */}
+      <div
+        ref={contentRef}
+        className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left bg-black/30 backdrop-blur-md p-8 rounded-xl shadow-lg"
+      >
+        <h2
+          ref={titleRef}
+          className="text-4xl md:text-5xl font-bold text-white mb-4"
+        >
           {project.title}
         </h2>
-        <p ref={textRef} className="text-xl md:text-2xl italic text-gray-500 leading-relaxed mb-8">
+        <p className="text-lg md:text-xl text-gray-300 italic mb-6">
           {project.language}
         </p>
 
-        {/* Buttons Section */}
-        <div ref={buttonsRef} className="flex flex-wrap gap-6 justify-center md:justify-start">
-  {project.github && (
-    <a
-      href={project.github}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center px-6 py-3 rounded-xl bg-white text-black font-medium transition duration-300 transform hover:scale-105 shadow-lg"
-    >
-      <img 
-        src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
-        alt="GitHub"
-        className="w-6 h-6 mr-2"
-      />
-      GitHub
-    </a>
-  )}
+        {/* Conditionally Rendered Buttons */}
+        <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center px-5 py-3 rounded-lg bg-white text-black font-semibold hover:bg-gray-200 transition-transform transform hover:scale-105 shadow-md"
+            >
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+                alt="GitHub"
+                className="w-5 h-5 mr-2"
+              />
+              GitHub
+            </a>
+          )}
 
-  {project.live && (
-    <a
-      href={project.live}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="px-6 py-3 rounded-xl bg-blue-800 text-white font-medium transition duration-300 transform hover:scale-105 shadow-lg"
-    >
-      Demo
-    </a>
-  )}
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-3 rounded-lg bg-blue-700 text-white font-semibold hover:bg-blue-600 transition-transform transform hover:scale-105 shadow-md"
+            >
+              Demo
+            </a>
+          )}
 
-  {project.read && (
-    <Link
-      to={project.read}
-      className="px-6 py-3 rounded-xl bg-green-800 text-white font-medium transition duration-300 transform hover:scale-105 shadow-lg"
-    >
-      Read More
-    </Link>
-  )}
-</div>
-
+          {project.read && (
+            <Link
+              to={project.read}
+              className="px-5 py-3 rounded-lg bg-green-700 text-white font-semibold hover:bg-green-600 transition-transform transform hover:scale-105 shadow-md"
+            >
+              Read More
+            </Link>
+          )}
+        </div>
       </div>
     </section>
   );
