@@ -61,32 +61,44 @@ export default function ProjectSection({ project, index }) {
         </p>
 
         {/* Buttons Section */}
-        <div ref={buttonsRef} className="flex gap-8">
-          <a
-            href={project.github}
-            className="flex items-center justify-center px-6 py-4 rounded-xl bg-white text-black font-medium transition duration-300 transform hover:scale-110 hover:bg-transparent-700 shadow-lg"
-          >
-            <img 
-              src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
-              alt="GitHub"
-              className="w-8 h-8 mr-3"
-            />
-            GitHub
-          </a>
+        <div ref={buttonsRef} className="flex flex-wrap gap-6 justify-center md:justify-start">
+  {project.github && (
+    <a
+      href={project.github}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center px-6 py-3 rounded-xl bg-white text-black font-medium transition duration-300 transform hover:scale-105 shadow-lg"
+    >
+      <img 
+        src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+        alt="GitHub"
+        className="w-6 h-6 mr-2"
+      />
+      GitHub
+    </a>
+  )}
 
-          <a
-            href={project.live}
-            className="px-10 py-5 text-2xl rounded-xl bg-blue-900 text-white font-medium transition duration-300 transform hover:scale-110 hover:bg-green-700 shadow-lg"
-          >
-            Demo
-          </a>
+  {project.live && (
+    <a
+      href={project.live}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="px-6 py-3 rounded-xl bg-blue-800 text-white font-medium transition duration-300 transform hover:scale-105 shadow-lg"
+    >
+      Demo
+    </a>
+  )}
 
-          {project.read && (
-            <Link to={project.read} className="px-10 py-5 text-2xl rounded-xl bg-green-900 text-white font-medium transition duration-300 transform hover:scale-110 hover:bg-green-700 shadow-lg">
-              Read More
-            </Link>
-          )}
-        </div>
+  {project.read && (
+    <Link
+      to={project.read}
+      className="px-6 py-3 rounded-xl bg-green-800 text-white font-medium transition duration-300 transform hover:scale-105 shadow-lg"
+    >
+      Read More
+    </Link>
+  )}
+</div>
+
       </div>
     </section>
   );

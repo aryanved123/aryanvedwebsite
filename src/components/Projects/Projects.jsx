@@ -25,12 +25,7 @@ const projects = [
     image: "/images/rentalappfront.jpg",
     live: "https://www.youtube.com/shorts/OjF_Pw3BkwQ",
   },
-  {
-    id: 3,
-    title: "Financial Calculator Web App",
-    language: "Created using Node.js, Express.js and MongoDB.",
-    github: "https://github.com/aryanved123/FinancialCalculator",
-  },
+ 
   {
     id: 3,
     title: "Ultimate Texas Holdem Poker Game",
