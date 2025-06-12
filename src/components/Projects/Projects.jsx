@@ -30,7 +30,7 @@ const projects = [
     id: 3,
     title: "Ultimate Texas Holdem Poker Game",
     language: "Created using Node.js, Express.js and MongoDB.",
-    image: "/images/rentalappfront.jpg",
+    image: "/images/Poker-Game-Pic.png",
     github: "https://github.com/aryanved123/Ultimate-Texas-Holdem-Game",
     live: "https://ultimate-texas-holdem-game.vercel.app/"
   },

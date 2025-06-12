@@ -6,9 +6,21 @@ gsap.registerPlugin(ScrollTrigger);
 
 const experience = [
   {
-    title: "Web Developer (Part-Time)",
+    title: "User Experience Researcher (Riipen LevelUP)",
+    company: "COOCO",
+    date: "Mar 2025 - April 2025",
+    description: [
+      "Led a user experience research project for COOCO, focusing on identifying usability issues and improving the overall user interface and experience.",
+      "Conducted user testing sessions, gathered qualitative and quantitative feedback, and performed heuristic evaluations based on Nielsen’s 10 usability principles.",
+      "Utilized Figma to design wireframes and high-fidelity prototypes, implementing user-centered design solutions based on research findings.",
+      "Developed and presented design recommendations to stakeholders, directly influencing the redesign of key web pages to be more intuitive and accessible"
+    ]
+
+  },
+  {
+    title: "Web Developer (Volunteer)",
     company: "Gross Innovations",
-    date: "Jan 2025 - Present",
+    date: "Jan 2025 - Mar 2025",
     description: [
       "Developed and deployed advanced financial calculators, including Burn Rate, Runway, Customer Acquisition Cost (CAC), and Lifetime Value (LTV), to support data-driven decision-making for startups and businesses.",
       "Engineered a dynamic web application with React.js for an intuitive and responsive front-end, while leveraging MongoDB for a scalable and efficient back-end database.",
@@ -16,7 +28,7 @@ const experience = [
     ]
   },
   {
-    title: "iOS Tech Support Representative",
+    title: "Apple iOS Tech Support Specialist",
     company: "Transcom",
     date: "June 2024 - Sept 2024",
     description: [
@@ -29,10 +41,10 @@ const experience = [
 
 const education = [
   {
-    title: "Bachelor's of Science in Computer Science",
+    title: "Bachelor's of Science in Computer Science (Honours) - Co-op",
     company: "Ontario Tech University",
     date: "2022 - 2026",
-    description: "Relevant Courses: Artificial Intelligence, Data Structures, Mobile Development, Databases & Concepts",
+    description: "Relevant Courses: Analysis and Design of Algorithms, Data Structures, Object Oriented Programming, Databases & Concepts",
   },
   {
     title: "Ontario Secondary School Diploma",
@@ -40,10 +52,6 @@ const education = [
     date: "2018 - 2022",
   },
   
-];
-
-const skills = [
-  "JavaScript", "Python", "React", "Flutter", "Node.js", "GSAP", "Tailwind CSS", "DaisyUI", "SQL", "Git",
 ];
 
 const TimelineCard = ({ item }) => (
