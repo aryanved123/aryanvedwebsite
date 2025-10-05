@@ -6,6 +6,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 const experience = [
   {
+    title: "Business Systems Analyst Co-op",
+    company: "CIBC",
+    date: "Sept 2025 - April 2026",
+    description: [
+      "Collaborate with business partners to gather and document requirements in Confluence and translate them into actionable Jira user stories and tasks.",
+      "Support strategic technology projects by analyzing business needs, designing Salesforce-based solutions, and ensuring alignment with enterprise architecture standards.",
+      "Utilize Salesforce dashboards and reports to provide insights that inform project decisions and validate requirements."
+    ]
+
+  },
+  {
     title: "User Experience Researcher (Riipen LevelUP)",
     company: "COOCO",
     date: "Mar 2025 - April 2025",
@@ -16,16 +27,6 @@ const experience = [
       "Developed and presented design recommendations to stakeholders, directly influencing the redesign of key web pages to be more intuitive and accessible"
     ]
 
-  },
-  {
-    title: "Web Developer (Volunteer)",
-    company: "Gross Innovations",
-    date: "Jan 2025 - Mar 2025",
-    description: [
-      "Developed and deployed advanced financial calculators, including Burn Rate, Runway, Customer Acquisition Cost (CAC), and Lifetime Value (LTV), to support data-driven decision-making for startups and businesses.",
-      "Engineered a dynamic web application with React.js for an intuitive and responsive front-end, while leveraging MongoDB for a scalable and efficient back-end database.",
-      "Worked within an Agile development team to enhance UI/UX workflows, optimize front-end performance, and integrate APIs for seamless data exchange and user interaction."
-    ]
   },
   {
     title: "Apple iOS Tech Support Specialist",
